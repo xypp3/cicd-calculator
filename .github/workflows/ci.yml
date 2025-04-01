@@ -18,3 +18,20 @@ jobs:
       - name: Run unit tests
         run: |
           NODE_ENV=production yarn test
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch repo
+        uses: actions/checkout@4
+      - name: Setup Node.js
+        uses: actions/setup-node@4
+        with:
+          node-version: '20'
+          cach: 'yarn'
+      - name: Install deps
+        run: |
+          yarn
+      - name: Lint code
+        run: |
+          yarn lint
+    
